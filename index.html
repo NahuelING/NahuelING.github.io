@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nahuel Alegre Serrudo — Ingeniería de Sistemas</title>
+<meta name="description" content="Portafolio de Nahuel Andrés Alegre Serrudo, estudiante de Ingeniería de Sistemas en la Universidad Privada Domingo Savio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #12171F;
+    --surface: #1A212B;
+    --ink: #E7EBEF;
+    --ink-soft: #97A3B0;
+    --line: #2B3441;
+    --blue: #7FAEDD;
+    --blue-tint: #1D2A38;
+    --brass: #D9A75A;
+    --brass-tint: #2A2416;
+    --radius: 4px;
+    --maxw: 880px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3{
+    font-family: 'Archivo', sans-serif;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    background: rgba(18,23,31,0.88);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    z-index: 10;
+  }
+
+  nav.wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .logo{
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+  .logo span{ color: var(--blue); }
+
+  .nav-links{
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a{
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    transition: color 0.15s ease;
+  }
+  .nav-links a:hover{ color: var(--blue); }
+
+  /* ---------- Section scaffolding ---------- */
+  section{ padding: 72px 0; }
+  section + section{ border-top: 1px solid var(--line); }
+
+  .section-head{
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .section-head .index{
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--brass);
+  }
+
+  .section-head h2{
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: start;
+    padding-top: 64px;
+  }
+
+  .frame{
+    position: relative;
+    padding: 14px;
+  }
+  .frame::before, .frame::after{
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--brass);
+  }
+  .frame::before{ top: 0; left: 0; border-right: none; border-bottom: none; }
+  .frame::after{ bottom: 0; right: 0; border-left: none; border-top: none; }
+
+  .avatar{
+    width: 172px;
+    height: 172px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, #3D6D9C, #17293B);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 2.6rem;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-text h1{
+    font-size: 2.15rem;
+    font-weight: 800;
+    line-height: 1.15;
+    max-width: 12ch;
+  }
+
+  .role{
+    margin-top: 8px;
+    font-size: 1.05rem;
+    color: var(--blue);
+    font-weight: 600;
+  }
+
+  .bio{
+    margin-top: 18px;
+    max-width: 58ch;
+    color: var(--ink-soft);
+    font-size: 1rem;
+  }
+
+  .meta-row{
+    display: flex;
+    gap: 32px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item .label{
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+  .meta-item .value{
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 2px;
+  }
+
+  .interests{
+    margin-top: 24px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .pill{
+    font-size: 0.8rem;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: var(--blue-tint);
+    color: var(--blue);
+    font-weight: 500;
+  }
+
+  /* ---------- Skills ---------- */
+  .skills-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .skill-card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+  }
+
+  .skill-card h3{
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--blue);
+  }
+
+  .tag-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: 'Inter', monospace;
+  }
+
+  .tag{
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 0.82rem;
+    padding: 4px 10px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--ink);
+  }
+
+  /* ---------- Education ---------- */
+  .timeline{
+    position: relative;
+    padding-left: 28px;
+    border-left: 2px solid var(--line);
+  }
+
+  .timeline-item{ position: relative; padding-bottom: 4px; }
+
+  .timeline-item::before{
+    content: "";
+    position: absolute;
+    left: -34px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    background: var(--blue);
+    border-radius: 50%;
+    border: 3px solid var(--bg);
+    outline: 2px solid var(--blue);
+  }
+
+  .timeline-item h3{
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  .timeline-item .school{
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 4px;
+  }
+
+  .timeline-item .dates{
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  .timeline-item p{
+    margin-top: 12px;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+
+  /* ---------- Projects ---------- */
+  .empty-state{
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    text-align: left;
+  }
+
+  .empty-state .tag-status{
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--brass);
+    background: var(--brass-tint);
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+  }
+
+  .empty-state p{
+    color: var(--ink-soft);
+    max-width: 55ch;
+  }
+
+  .empty-state .cta{
+    display: inline-block;
+    margin-top: 18px;
+    font-weight: 600;
+    color: var(--blue);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding: 32px 0 48px;
+    text-align: left;
+  }
+  footer p{
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px){
+    .hero{ grid-template-columns: 1fr; }
+    .avatar{ width: 128px; height: 128px; font-size: 2rem; }
+    .skills-grid{ grid-template-columns: 1fr; }
+    .hero-text h1{ max-width: none; }
+    section{ padding: 52px 0; }
+  }
+
+  :focus-visible{
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">N<span>A</span>S</div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#educacion">Educación</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <section id="inicio" class="hero">
+    <div class="frame">
+      <!--
+        Para usar tu foto real: reemplaza el <div class="avatar">NAS</div>
+        por: <img src="foto.jpg" alt="Nahuel Alegre Serrudo" class="avatar" style="object-fit:cover;">
+        y sube foto.jpg junto a este archivo en el repositorio.
+      -->
+      <div class="avatar">NAS</div>
+    </div>
+    <div class="hero-text">
+      <h1>Nahuel Andrés Alegre Serrudo</h1>
+      <p class="role">Estudiante de Ingeniería de Sistemas</p>
+      <p class="bio">
+        Curso Ingeniería de Sistemas en la Universidad Privada Domingo Savio, donde
+        vengo formándome en desarrollo de software, bases de datos y administración
+        de sistemas. Me gusta entender cómo funcionan las cosas por dentro, desde el
+        código hasta el servidor donde corre. Fuera de la carrera, disfruto de los
+        videojuegos, el gimnasio y la música.
+      </p>
+      <div class="meta-row">
+        <div class="meta-item">
+          <div class="label">Universidad</div>
+          <div class="value">Univ. Privada Domingo Savio</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Semestre actual</div>
+          <div class="value">5.º – 6.º · 2026</div>
+        </div>
+      </div>
+      <div class="interests">
+        <span class="pill">Videojuegos</span>
+        <span class="pill">Gimnasio</span>
+        <span class="pill">Música</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <div class="section-head">
+      <span class="index">01</span>
+      <h2>Habilidades técnicas</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Lenguajes de programación</h3>
+        <div class="tag-list">
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">C#</span>
+          <span class="tag">C++</span>
+          <span class="tag">Java</span>
+          <span class="tag">PHP</span>
+          <span class="tag">CSS</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Frameworks y plataformas</h3>
+        <div class="tag-list">
+          <span class="tag">Blazor</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Bases de datos</h3>
+        <div class="tag-list">
+          <span class="tag">SQL Server</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Herramientas y sistemas</h3>
+        <div class="tag-list">
+          <span class="tag">Visual Studio 2026</span>
+          <span class="tag">VS Code</span>
+          <span class="tag">Linux (Debian)</span>
+          <span class="tag">MinIO</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="educacion">
+    <div class="section-head">
+      <span class="index">02</span>
+      <h2>Educación</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Ingeniería de Sistemas</h3>
+        <div class="school">Universidad Privada Domingo Savio</div>
+        <div class="dates">Septiembre 2023 — Presente (5.º–6.º semestre, 2026)</div>
+        <p>
+          Formación orientada al desarrollo de software, gestión de bases de datos
+          y administración de sistemas, combinando lenguajes de programación
+          de propósito general con herramientas de infraestructura.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <div class="section-head">
+      <span class="index">03</span>
+      <h2>Proyectos</h2>
+    </div>
+    <div class="empty-state">
+      <span class="tag-status">En construcción</span>
+      <p>
+        Todavía no subí proyectos a este portafolio: acabo de crear el perfil.
+        A medida que vaya terminando trabajos de la carrera y proyectos personales,
+        los voy a ir documentando acá, con su descripción, tecnologías usadas
+        y enlace al repositorio.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p>© 2026 Nahuel Alegre Serrudo</p>
+</footer>
+
+</body>
+</html>
